@@ -44,6 +44,6 @@ class LoginController extends Controller
     		return redirect()->route('home');
     	}
 
-    	return ridirect()->back();
+    	return redirect()->back();
     }
 }

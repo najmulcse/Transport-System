@@ -19,27 +19,6 @@
 
 @section('sideBar')
 
-              <div class="menu_section">
-                <h3>Issue</h3>
-                <ul class="nav side-menu">
-                  <li><a href="index.html"><i class="fa fa-globe"></i> All Issue </a></li>
-                  <li><a href="index.html"><i class="fa fa-list-alt "></i>  Driver Profile </a></li>
-                  <li><a href="index.html"><i class="fa fa-list-alt "></i> Check  </a></li>
-                  <li><a href="index.html"><i class="fa fa-plus"></i> Conductor Profile </a></li>
-                </ul>
-              </div>
-
-
-              <div class="menu_section">
-                <h3>Request</h3>
-                <ul class="nav side-menu">
-                  <li><a href="index.html"><i class="fa fa-globe"></i> All Request </a></li>
-                  <li><a href="index.html"><i class="fa fa-list-alt "></i> Driver routine </a></li>
-                  <li><a href="index.html"><i class="fa fa-list-alt "></i> Conductor Routine </a></li>
-                  <li><a href="index.html"><i class="fa fa-plus"></i> Add New Driver Conductor </a></li>
-                </ul>
-              </div>
-
-            </div>
+              @include('supervisors.sidebar')
 
 @endsection

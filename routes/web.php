@@ -56,6 +56,43 @@ Route::get('admin/all_member', ['as'=>'all.member','uses'=>'AdminController@memb
 Route::get('admin/delete_member/{id}', ['as'=>'delete.member','uses'=>'AdminController@deleteMember']);
 
 
+//Supervisor controller...
+
+Route::group(['prefix'=>'supervisor'],function(){
+		//vehicles
+		Route::get('add_vehicle', ['as'=>'add.vehicle','uses'=>'SupervisorController@addVehicle']);
+
+		Route::post('add_vehicle', ['as'=>'store.vehicle','uses'=>'SupervisorController@storeVehicle']);
+		Route::get('all_vehicles', ['as'=>'all.vehicles','uses'=>'SupervisorController@allVehicles']);
+		Route::get('delete_vehicle/{id}', ['as'=>'delete.vehicle','uses'=>'SupervisorController@deleteVehicle']);
+
+		//drivers
+		Route::get('add_driver', ['as'=>'add.driver','uses'=>'SupervisorController@addDriver']);
+		Route::post('add_driver', ['as'=>'store.driver','uses'=>'SupervisorController@storeDriver']);
+
+		Route::get('all_drivers', ['as'=>'all.drivers','uses'=>'SupervisorController@allDrivers']);
+
+		Route::get('delete_driver/{id}', ['as'=>'delete.driver','uses'=>'SupervisorController@deleteDriver']);
+
+
+		//Time & routes
+
+		Route::get('add_time', ['as'=>'add.times','uses'=>'SupervisorController@addTime']);
+		Route::post('add_time', ['as'=>'store.time','uses'=>'SupervisorController@storeTime']);
+		Route::get('all_times&routes', ['as'=>'all.times.routes','uses'=>'SupervisorController@showTimesAndRoute']);
+		Route::get('delete_time/{id}', ['as'=>'delete.time','uses'=>'SupervisorController@deleteTime']);
+
+
+		Route::get('add_route', ['as'=>'add.route','uses'=>'SupervisorController@addRoute']);
+		Route::post('add_route', ['as'=>'store.route','uses'=>'SupervisorController@storeRoute']);
+		Route::get('delete_route/{id}', ['as'=>'delete.route','uses'=>'SupervisorController@deleteRoute']);
+
+		//assign vehicles to driver
+		Route::get('assign_vehicle', ['as'=>'assign.vehicle','uses'=>'SupervisorController@assignVehicle']);
+		Route::post('assign_vehicle', ['as'=>'store.assign.vehicle','uses'=>'SupervisorController@storeAssignVehicle']);
+
+});
+
 Route::get('/something', function(){
 	return view('test');
 });

@@ -36,9 +36,20 @@ class User extends Authenticatable
 
         return $this->usertype_id == 5;
     }
+    public function isDriver(){
 
+        return $this->usertype_id == 2;
+    }
+    public function isHelper(){
+
+        return $this->usertype_id == 6;
+    }
     public function type()
     {
         return $this->belongsTo('App\Usertype','usertype_id','id');
+    }
+    public function assign(){
+        
+        return $this->belongsTo('App\Routine');
     }
 }
