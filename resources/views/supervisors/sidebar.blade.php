@@ -3,7 +3,8 @@
                 <ul class="nav side-menu">
                   <li><a href="{{route('add.vehicle')}}"><i class="fa fa-plus"></i> Add New Vehicle </a></li>
                   <li><a href="{{route('all.vehicles')}}"><i class="fa fa-list-alt "></i> All Vehicles  </a></li> 
-                  <li><a href="{{route('assign.vehicle')}}"><i class="fa fa-list-alt "></i> Vehicle Assign to Driver  </a></li>
+                  <li><a href="{{route('assign.vehicle')}}"><i class="fa fa-list-alt "></i> Vehicle Assign to Driver  </a></li> 
+                  <li><a href="{{route('show.assign_vehicle')}}"><i class="fa fa-list-alt "></i> Show Assign Vehicle  </a></li>
                   <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#posts"> <i class="fa fa-th-large" aria-hidden="true"></i>   Route & Time <i class="fa fa-chevron-circle-down pull-right" aria-hidden="true"></i></a>
                         <ul id="posts" class="collapse">

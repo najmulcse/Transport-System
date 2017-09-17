@@ -8,6 +8,7 @@ use App\User;
 use App\Time;
 use App\Route;
 use App\Routine;
+use App\Schedule;
 class SupervisorController extends Controller
 {
    public function __construct()
@@ -204,6 +205,7 @@ class SupervisorController extends Controller
 
     public function storeAssignVehicle(Request $request)
     {
+        
         $roles = [
             'vehicle_id'          => 'required',
             'driver_id'           => 'required',
@@ -228,13 +230,21 @@ class SupervisorController extends Controller
             }
             else
             {
-                $routine = new Routine;
+               /* $routine = new Routine;
                 $routine->driver_id  = $request->driver_id;
                 $routine->helper_id  = $request->helper_id;
                 $routine->vehicle_id = $request->vehicle_id;
                 $routine->route_id   = $request->route;
-                $routine->save();
-
+                $routine->save();*/
+                $routine = Routine::create([
+                           'driver_id' => $request->driver_id,
+                           'helper_id' => $request->helper_id,
+                           'vehicle_id'=> $request->vehicle_id,
+                           'route_id'  => $request->route     
+                        ]);
+                foreach($request->multiple as $m){
+                      Schedule::create(['time'=>$m,'routine_id'=>$routine->id]);
+                 }
                 if($routine){
                     return back()->with('msg','Successfully added')
                                 ->with('status',1);
@@ -243,5 +253,12 @@ class SupervisorController extends Controller
             }
 
             return back();                            ;
+    }
+
+    public function showAssignVehicles(){
+
+        $routines  = Routine::all();
+
+        return view('supervisors.showAssignVehicles',compact('routines'));
     }
 }

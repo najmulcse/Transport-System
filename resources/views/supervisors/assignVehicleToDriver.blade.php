@@ -117,6 +117,33 @@
                 {!!$errors->first('route','<span class="help-block">:message</span>')!!}
             </div>
             </div>
+            <div class="row">
+                <div class="col-sm-4">
+                  <label class="col-form-label">Time</label>
+                </div>
+                <div class="col-sm-8">
+                   <div class="form-group multiple-form-group row" data-max=8>
+                      
+                      
+                      <div class="form-group input-group">
+
+                       <select class="btn btn-md form-control" name="multiple[]" >
+                          <option value="" selected="">SELECT TIME</option>
+                          
+                            @if(count($times)>0)
+                                @foreach($times as $time)
+                                      <option value="{{$time->time}}">{{$time->time}}</option>
+                                @endforeach
+                            @endif
+                      </select>
+                      {!!$errors->first('route','<span class="help-block">:message</span>')!!}
+                         
+                          <span class="input-group-btn"><button type="button" class="btn btn-default btn-add">+
+                         </button></span>
+                    </div>
+                  </div>
+                </div>
+          </div>
           <div class="form-group row">
             <label class="col-sm-4"></label>
              <div class="col-sm-8 ">

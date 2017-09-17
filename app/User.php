@@ -44,6 +44,14 @@ class User extends Authenticatable
 
         return $this->usertype_id == 6;
     }
+
+    public function isOil(){
+        return $this->usertype_id == 3;
+    }
+      
+    public function isMechanical(){
+        return $this->usertype_id == 4;
+    }     
     public function type()
     {
         return $this->belongsTo('App\Usertype','usertype_id','id');

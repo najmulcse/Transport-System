@@ -31,7 +31,6 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::get('/home', 'HomeController@index')->name('home');
 
-	Route::get('/admin', 'UserController@admin')->name('user.admin');
 
 	Route::get('/supervisor', 'UserController@supervisor')->name('user.supervisor');
 
@@ -49,16 +48,19 @@ Route::group(['middleware' => 'auth'], function(){
 
 
 //admin controller ....
+Route::group(['middleware' => 'auth','isAdmin'], function(){
 
-Route::get('admin/add_member', ['as'=>'add.member','uses'=>'AdminController@addMember']);
-Route::post('admin/add_member', ['as'=>'store.member','uses'=>'AdminController@storeMember']);
-Route::get('admin/all_member', ['as'=>'all.member','uses'=>'AdminController@memberList']);
-Route::get('admin/delete_member/{id}', ['as'=>'delete.member','uses'=>'AdminController@deleteMember']);
+		Route::get('/admin', 'UserController@admin')->name('user.admin');
+		Route::get('admin/add_member', ['as'=>'add.member','uses'=>'AdminController@addMember']);
+		Route::post('admin/add_member', ['as'=>'store.member','uses'=>'AdminController@storeMember']);
+		Route::get('admin/all_member', ['as'=>'all.member','uses'=>'AdminController@memberList']);
+		Route::get('admin/delete_member/{id}', ['as'=>'delete.member','uses'=>'AdminController@deleteMember']);
+});
 
 
 //Supervisor controller...
 
-Route::group(['prefix'=>'supervisor'],function(){
+Route::group(['prefix'=>'supervisor','middleware' =>'auth'],function(){
 		//vehicles
 		Route::get('add_vehicle', ['as'=>'add.vehicle','uses'=>'SupervisorController@addVehicle']);
 
@@ -90,7 +92,7 @@ Route::group(['prefix'=>'supervisor'],function(){
 		//assign vehicles to driver
 		Route::get('assign_vehicle', ['as'=>'assign.vehicle','uses'=>'SupervisorController@assignVehicle']);
 		Route::post('assign_vehicle', ['as'=>'store.assign.vehicle','uses'=>'SupervisorController@storeAssignVehicle']);
-
+		Route::get('show_assign_vehicles', ['as'=>'show.assign_vehicle','uses'=>'SupervisorController@showAssignVehicles']);
 });
 
 Route::get('/something', function(){

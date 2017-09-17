@@ -29,6 +29,19 @@ class LoginController extends Controller
             {
                 return redirect()->route('user.supervisor');
             }
+            else if(Auth::user()->isDriver() || Auth::user()->isHelper())
+            {
+                return redirect()->route('user.driver');
+            }
+            else if(Auth::user()->isOil())
+            {
+                return redirect()->route('user.oilDept');
+            }
+            else if(Auth::user()->isMechanical())
+            {
+                return redirect()->route('user.mechanicalDept');
+            }
+
 
     		// if($user->status == 'admin')
     		// 	return redirect()->route('user.admin');
